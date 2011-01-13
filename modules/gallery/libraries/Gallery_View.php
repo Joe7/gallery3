@@ -159,11 +159,11 @@ class Gallery_View_Core extends View {
 
     $links = '';
     if ($type == "css") {
-      foreach( $paths as $path => $x ) {
+      foreach($paths as $path => $x) {
         $links .= html::stylesheet($path, "screen,print,projection", false);
       }
     } else {
-      foreach( $paths as $path => $x ) {
+      foreach($paths as $path => $x) {
         $links .= html::script($path, false);
       }
     }
