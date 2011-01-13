@@ -63,8 +63,6 @@ class Gallery_View_Core extends View {
    * Combine a series of files into a single one and cache it in the database.
    */
   protected function combine_files($paths, $type) {
-    $links = array();
-
     if (empty($paths)) {
       return;
     }
@@ -150,4 +148,26 @@ class Gallery_View_Core extends View {
 
     return $css;
   }
+
+  /**
+   * Add individiual css/js files to head for development purposes
+   */
+  protected function add_files($paths, $type) {
+    if (empty($paths)) {
+      return;
+    }
+
+    $links = '';
+    if ($type == "css") {
+      foreach( $paths as $path => $x ) {
+        $links .= html::stylesheet($path, "screen,print,projection", false);
+      }
+    } else {
+      foreach( $paths as $path => $x ) {
+        $links .= html::script($path, false);
+      }
+    }
+    return $links;
+  }
+
 }
